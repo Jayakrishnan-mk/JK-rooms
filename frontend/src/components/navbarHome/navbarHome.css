@@ -1,0 +1,94 @@
+@import url('https://fonts.googleapis.com/css2?family=Jolly+Lodger&family=Open+Sans&family=Red+Hat+Mono:ital,wght@1,300&display=swap');
+
+.navbar {
+  background-color: transparent;
+  display: flex;
+  justify-content: space-around;
+  height: 20rem;
+  align-items: center;
+
+  /* position: absolute; */
+}
+
+.logo {
+  font-family: 'Jolly Lodger', cursive;
+  color: white;
+  position: absolute;
+  width: 192px;
+  height: 78px;
+  left: 100px;
+  top: 37px;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 64px;
+  line-height: 78px;
+}
+
+.navButtonOne {
+  /* margin-left: 34rem; */
+  margin-top: 2rem;
+  border: none;
+  color: white;
+  background-color: transparent;
+  padding: 5px 10px;
+  cursor: pointer;
+  font-family: 'Balthazar';
+  font-size: 40px;
+  line-height: 0;
+  color: #FFFFFF;
+
+}
+
+.navButtonTwo {
+  margin-left: 20px;
+  border: none;
+  color: white;
+  background-color: transparent;
+  padding: 5px 10px;
+  cursor: pointer;
+  font-family: 'Balthazar';
+  font-size: 40px;
+  line-height: 0;
+  color: #FFFFFF;
+
+}
+
+.description {
+  color: white;
+
+  margin-top: 10rem;
+}
+
+.firstp {
+
+  font-family: 'kanit';
+  font-style: normal;
+  font-weight: bold;
+  font-size: 32px;
+  line-height: 33px;
+  letter-spacing: 9px;
+
+
+  color: #f9ffc0;
+
+
+
+  text-align: center;
+
+}
+
+.secondp {
+
+  font-family: 'Balthazar';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 32px;
+  line-height: 33px;
+
+
+  color: #eaeaea;
+
+  text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+
+  text-align: center;
+}

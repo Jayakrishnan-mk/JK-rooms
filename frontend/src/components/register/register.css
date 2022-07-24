@@ -1,0 +1,118 @@
+/* From uiverse.io by @alexruix */
+
+.main {
+    background-image: url("../../Assets/Images/loginImg.jpg");
+    height: 91vh;
+    padding-top: 4rem;
+    background-repeat: no-repeat;
+}
+
+.card {
+    width: 520px;
+    padding: 1.9rem 1.2rem;
+    text-align: center;
+    /* background: #2a2b38; */
+    background-color: rgba(0, 0, 0, 0.5);
+    margin: auto;
+    /* margin-top: 14rem; */
+    font-size: 2rem;
+    height: 32rem;
+    border-radius: 16px;
+}
+
+
+
+/*Inputs*/
+.field {
+    width: 70%;
+    margin: auto;
+    margin-top: .5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: .5em;
+    background-color: #1f2029;
+    border-radius: 4px;
+    padding: .5em 1em;
+}
+
+.input-icon {
+    height: 1em;
+    width: 1em;
+    fill: #ffeba7;
+}
+
+.input-field {
+    background: none;
+    border: none;
+    outline: none;
+    width: 100%;
+    color: #d3d3d3;
+}
+
+/*Text*/
+.title {
+    margin-bottom: 1rem;
+    font-size: 1.5em;
+    font-weight: 500;
+    color: #f5f5f5;
+}
+
+/*Buttons*/
+.button {
+    /* margin: 1rem; */
+    border: none;
+    border-radius: 4px;
+    font-weight: bold;
+    font-size: .5em;
+    text-transform: uppercase;
+    padding: 0.6em 1.2em;
+    background-color: #ffeba7;
+    color: #5e6681;
+    box-shadow: 0 8px 24px 0 rgb(255 235 167 / 20%);
+    transition: all .3s ease-in-out;
+
+    height: 3rem;
+    margin-top: 4.3rem;
+    ;
+
+}
+
+.heading {
+    display: flex;
+    justify-content: space-around;
+}
+
+.btn-link {
+    color: #f5f5f5;
+    display: block;
+    font-size: .75em;
+    transition: color .3s ease-out;
+}
+
+/*Hover & focus*/
+.field input:focus::placeholder {
+    opacity: 0;
+    transition: opacity .3s;
+}
+
+.button:hover {
+    background-color: #5e6681;
+    color: #ffeba7;
+    box-shadow: 0 8px 24px 0 rgb(16 39 112 / 20%);
+}
+
+.btn-link:hover {
+    color: #ffeba7;
+}
+
+.signup {
+    font-size: .9rem;
+    height: 2rem;
+    width: 20%;
+    margin-top: 2.5rem;
+}
+
+.Toastify {
+    font-size: 1rem;
+}

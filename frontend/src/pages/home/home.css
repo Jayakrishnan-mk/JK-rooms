@@ -1,0 +1,6 @@
+.home {
+    background-image: url("../../Assets/Images/crop.jpg");
+    height: 100vh;
+    background-size: cover;
+    margin: 0;
+}
