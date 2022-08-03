@@ -26,10 +26,34 @@ function Register() {
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-            if (values.email === "" || values.password === "") {
+            if (values.email === "" ||
+                values.password === "" ||
+                values.name === "" ||
+                values.phone === "") {
                 generateError("Please fill all the fields");
                 return;
             }
+            else if (values.name.length < 3) {
+                generateError("Name must be atleast 3 characters");
+                return;
+            }
+            else if (values.name.length > 20) {
+                generateError("Name must be maximum 20 characters");
+                return;
+            }
+            else if (!values.email.match(/^[A-Za-z0-9._-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,4}$/)) {
+                generateError("Please enter a valid email");
+                return;
+            }
+            else if (values.phone.length !== 10) {
+                generateError("Phone number must be atleast 10 digits");
+                return;
+            }
+            else if (values.password.length < 5) {
+                generateError("Password must be atleast 5 characters");
+                return;
+            }
+
             const { data } = await axios.post("api/register", {
                 ...values
             },
@@ -56,6 +80,7 @@ function Register() {
             console.log(error);
         }
     }
+
     return (
         <div className='main'>
 

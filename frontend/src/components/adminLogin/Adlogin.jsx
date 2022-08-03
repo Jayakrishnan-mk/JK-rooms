@@ -1,5 +1,5 @@
 import './adlogin.css'
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { ToastContainer, toast } from 'react-toastify';
 import axios from '../../axiosInstance';
@@ -8,9 +8,11 @@ import axios from '../../axiosInstance';
 function Login() {
     const navigate = useNavigate();
 
-    const register = () => {
-        navigate('/register')
-    }
+    useEffect(() => {
+        if (!localStorage.getItem('adminToken')) {
+          navigate('/admin')
+        }
+      }, [])
 
     const [values, setValues] = useState({
         email: "",
@@ -31,7 +33,7 @@ function Login() {
                 generateError("Please fill all the fields");
                 return;
             }
-            const { data } = await axios.post("api/login", {
+            const { data } = await axios.post("api/admin/login", {
                 ...values
             },
                 {
@@ -46,6 +48,8 @@ function Login() {
                     return;
                 }
                 else if (data.user && data.created) {
+                    localStorage.setItem('admin', JSON.stringify(data.admin));
+                    localStorage.setItem('adminToken', data.adminToken);
                     navigate("/");
                 }
             }

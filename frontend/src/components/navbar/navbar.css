@@ -1,0 +1,40 @@
+.navigationBar {
+    background-color: #270e50;
+    height: 4rem;
+}
+
+.navigationBar>h1 {
+    position: absolute;
+    width: 144px;
+    height: 58px;
+    left: 81px;
+
+    font-family: 'Jolly Lodger';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 48px;
+    line-height: 6px;
+
+    color: #FFFFFF;
+}
+
+.navBtn {
+    margin: 1rem;
+    float: right;
+    color: black;
+    background-color: white;
+}
+
+.jkrooms {
+
+    font-family: 'Jolly Lodger', cursive;
+    color: white;
+    position: absolute;
+    width: 192px;
+    height: 78px;
+    left: 100px;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 40px;
+    line-height: 10px;
+}

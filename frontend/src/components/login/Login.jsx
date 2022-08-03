@@ -31,6 +31,7 @@ function Login() {
                 generateError("Please fill all the fields");
                 return;
             }
+
             const { data } = await axios.post("api/login", {
                 ...values
             },
@@ -46,6 +47,8 @@ function Login() {
                     return;
                 }
                 else if (data.user && data.created) {
+                    localStorage.setItem('user', JSON.stringify(data.user));
+                    localStorage.setItem('token', data.token);
                     navigate("/");
                 }
             }

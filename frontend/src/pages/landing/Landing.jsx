@@ -1,26 +1,27 @@
 import { useEffect } from "react"
-import { useNavigate } from 'react-router-dom'
+import { useNavigate } from "react-router-dom"
 import Featured from "../../components/featured/Featured"
 import FeaturedProperties from "../../components/featuredProperties/FeaturedProperties"
 import Footer from "../../components/footer/Footer"
+import LandingNavbar from "../../components/landingNavbar/LandingNavbar"
 import MailList from "../../components/mailList/MailList"
-import NavbarHome from "../../components/navbarHome/NavbarHome"
 import PropertyList from "../../components/propertyList/PropertyList"
 import RoomSearch from "../../components/roomSearch/RoomSearch"
-import "./home.css"
+import "./landing.css"
 
-function Home() {
+function Landing() {
 
   const navigate = useNavigate();
+
   useEffect(() => {
-    if (!localStorage.getItem('token')) {
-      navigate('/landing')
+    if (localStorage.getItem('token')) {
+      navigate('/')
     }
   }, [])
 
   return (
-    <div className="home" id='overlay'>
-      <NavbarHome />
+    <div className="home" >
+      <LandingNavbar />
       <RoomSearch />
       <div className="homeContainer">
         <Featured />
@@ -36,5 +37,5 @@ function Home() {
   )
 }
 
-export default Home
+export default Landing
 

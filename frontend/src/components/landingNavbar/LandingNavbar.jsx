@@ -1,14 +1,13 @@
-import './navbarHome.css'
+import './landingNavbar.css'
 import { useNavigate } from 'react-router-dom'
 
-const NavbarHome = () => {
-
+const LandingNavbar = () => {
     const navigate = useNavigate();
-
-    const logoutfn = () => {
-        localStorage.removeItem('user');
-        localStorage.removeItem('token');
-        navigate('/landing')
+    const loginfn = () => {
+        navigate('/login')
+    }
+    const register = () => {
+        navigate('/register')
     }
 
     return (
@@ -17,13 +16,18 @@ const NavbarHome = () => {
                 <div>
                     <p className="logo">JK ROOMS</p>
                 </div>
-                <div>
-                    <button className="logoutButton" onClick={logoutfn}>Logout</button>
 
+                {/* if() */}
+
+                <div className="navItems">
+                    <button className="navButtonOne" onClick={register}>Register</button>
+                    <button className="navButtonTwo" onClick={loginfn}>Login</button>
                 </div>
 
+                <div></div>
+
             </div>
-            <div className='description' id='overlay'>
+            <div className='description'>
                 <p className='firstp'>BOOK DIRECT BENEFITS</p>
                 <p className='secondp'>Book your stay directly on our website to avail of the best prices, exclusive rates,</p>
                 <p className='secondp'>and a number of special perks we have created for you.</p>
@@ -33,4 +37,4 @@ const NavbarHome = () => {
     )
 }
 
-export default NavbarHome
+export default LandingNavbar

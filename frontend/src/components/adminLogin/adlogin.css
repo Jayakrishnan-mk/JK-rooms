@@ -73,13 +73,15 @@
    
    button {
     background-color: #7878bd;
-    margin-top: 10px;
+    /* margin-top: 10px; */
     font-size: 14px;
     padding: 7px 12px;
     font-weight: 500;
     color: white;
+
+    margin-top: 0px;
    }
    
-   button:hover {
+   /* button:hover {
     background-color: #5f5f9c;
-   }
+   } */

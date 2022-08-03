@@ -55,8 +55,9 @@
 
 .description {
   color: white;
-
-  /* margin-top: 10rem; */
+  width: 70%;
+  margin: 14.59rem 0 0 13rem;
+  background-color:  rgb(120 120 120 / 50%);
 }
 
 .firstp {
@@ -83,7 +84,7 @@
   font-style: normal;
   font-weight: 400;
   font-size: 32px;
-  line-height: 33px;
+  line-height: 31px;
 
 
   color: #eaeaea;
@@ -91,16 +92,4 @@
   text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 
   text-align: center;
-}
-
-.logoutButton {
-  background-color: #ffab68;
-  border: none;
-  border-radius: 3px;
-  margin: 0rem 0rem 15rem 30rem;
-}
-
-#overlay {
-  z-index: 2; /* Specify a stack order in case you're using a different order for other elements */
-  cursor: pointer; /* Add a pointer on hover */
 }
