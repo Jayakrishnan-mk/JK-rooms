@@ -3,10 +3,10 @@ const { checkAdmin } = require("../middlewares/adminMiddlewares");
 
 const adminRouter = require("express").Router();
 
-adminRouter.post("/admin-register", adminRegister);
+// adminRouter.post("/register", adminRegister);
 
 
-adminRouter.post("/admin-login", adminLogin);
+adminRouter.post("/login", adminLogin);
 
 
 adminRouter.post("/delete/user/:id", deleteUser);

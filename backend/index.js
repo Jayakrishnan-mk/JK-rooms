@@ -33,6 +33,7 @@ app.use(express.json());
 //routes..........................
 app.use('/api/admin' , require('./server/routes/adminRoutes'));
 app.use('/api/hotels', require('./server/routes/hotelRoutes'));
+app.use('/api/rooms', require('./server/routes/roomRoutes'));
 app.use('/api' , require('./server/routes/userRoutes'));
 
 

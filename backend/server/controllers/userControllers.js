@@ -11,10 +11,7 @@ const createToken = (id) => {
 
 module.exports.register = async (req, res, next) => {
     try {
-        // const salt = bcrypt.genSalt(saltRounds, function (err, salt) {
-        //     bcrypt.hash(myPlaintextPassword, salt, function (err, hash) {
-        //     });
-        // });
+       
         // console.log('backend reached');
         const { name, email, password, phone } = req.body;
         const isUserExist = await userExist(email);
@@ -51,12 +48,12 @@ module.exports.login = async (req, res, next) => {
         const user = await UserDb.login(email, password);
         const token = createToken(user._id)
 
-        res.cookie("jwt", token, {
-            withCredentials: true,
-            httpOnly: false,
-            maxAge: maxAge * 1000,
-        })
-        res.status(200).json({ user: user._id, created: true })
+        // res.cookie("jwt", token, {
+        //     withCredentials: true,
+        //     httpOnly: false,
+        //     maxAge: maxAge * 1000,
+        // })
+        res.status(200).json({ user: user._id, created: true , token })
     } catch (error) {
         res.json({ error: "Invalid User id and Password", created: false })
     }

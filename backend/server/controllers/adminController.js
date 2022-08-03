@@ -61,16 +61,14 @@ module.exports.adminLogin = async (req, res, next) => {
     try {
         const { email, password } = req.body;
         const admin = await AdminDb.login( email, password );
-        // console.log('uuuuuuu', admin);
         const token = createToken(admin._id)
-        // console.log('ttttttttttt', token);
-
-        res.cookie("adminjwt", token, {
-            withCredentials: true,
-            httpOnly : false,
-            maxAge: maxAge * 1000, 
-        })
-        res.status(201).json({admin: admin._id, created: true })
+console.log('token', token);
+        // res.cookie("adminjwt", token, {
+        //     withCredentials: true,
+        //     httpOnly : false,
+        //     maxAge: maxAge * 1000, 
+        // })
+        res.status(201).json({admin: admin._id, created: true , token})
     } catch (error) {
         console.log(error.message);
         const errors = handleErrors(error);
