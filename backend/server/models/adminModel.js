@@ -12,23 +12,23 @@ const adminSchema = new mongoose.Schema({
     }
 });
 
-adminSchema.pre("save", async function (next) {
-    const salt = await bcrypt.genSalt();
-    this.password = await bcrypt.hash(this.password, salt) 
-    next();
+// adminSchema.pre("save", async function (next) {
+//     const salt = await bcrypt.genSalt();
+//     this.password = await bcrypt.hash(this.password, salt) 
+//     next();
     
-    
-})
+// })
 
 adminSchema.statics.login = async function (email, password) {
-    const admin = await this.findOne({ email });
+    const admin = await this.findOne({ email, password });
     if (admin) {
-        const auth = await bcrypt.compare(password, admin.password);
-        if (auth) {
+        // console.log('assssdd', admin);
+        // const auth = await bcrypt.compare(password, admin.password);
+        // if (auth) {
             return admin;
-        }
-        throw Error(" Incorrect password");
-    } throw Error("Incorrect Email")
+        // }
+        // throw Error(" Incorrect password");
+    } throw Error("Incorrect Credentials")  
 }
 
 

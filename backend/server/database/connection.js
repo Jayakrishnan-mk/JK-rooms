@@ -2,7 +2,8 @@ const mongoose = require('mongoose');
 
 const connectDB = async () => {
 
-    await mongoose.connect(`mongodb+srv://${process.env.MONGOURL}`, (err, data) => {
+    // await mongoose.connect(`mongodb+srv://${process.env.MONGOURL}`, (err, data) => {
+    await mongoose.connect('mongodb://localhost:27017/jkrooms', (err, data) => {
 
         if (err) {
             console.log(err.message);

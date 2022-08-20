@@ -5,14 +5,13 @@ import './navbar.css'
 function Navbar() {
     return (
 
-        <div className="navigationBar">
+        <div className="unavigationBar">
             <Link to={'/'}>
                 <h1 className='jkrooms'>JK ROOMS</h1>
             </Link>
-            <button className='navBtn'>Register</button>
-            <button className='navBtn'>Log in</button>
+            {/* <button className='unavBtn'>Register</button>
+            <button className='unavBtn'>Log in</button> */}
         </div>
-
     )
 }
 

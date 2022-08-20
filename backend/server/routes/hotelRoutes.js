@@ -1,5 +1,5 @@
 const express = require('express');
-const { createHotel, updateHotel, deleteHotel, getHotel, getHotels, countByCity, countByType } = require('../controllers/hotelController');
+const { createHotel, registerHotel, updateHotel, deleteHotel, getHotel, getHotels, countByCity, countByType, loginHotel } = require('../controllers/hotelController');
 const Hotel = require('../models/hotelModel');
 const { createError } = require('../utils/error');
 
@@ -26,7 +26,10 @@ hotelRouter.get('/', getHotels)
 hotelRouter.get('/countByCity', countByCity)
 hotelRouter.get('/countByType', countByType)
 
+//Routes
+hotelRouter.post('/register', registerHotel)
 
+hotelRouter.post('/login', loginHotel)
 
 
 module.exports = hotelRouter;

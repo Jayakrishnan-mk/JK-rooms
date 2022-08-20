@@ -9,13 +9,13 @@ const createToken = (id) => {
     return jwt.sign({ id }, "trippholic admin", {
         expiresIn: maxAge
     })
-} 
+}
 
 
 const handleErrors = (err) => {
     let errors = { email: "", password: "" }
 
-    if (err.message === "Incorrect Email"){
+    if (err.message === "Incorrect Email") {
         errors.email = "That email is not registered";
     }
     if (err.message.includes("Incorrect password")) {
@@ -35,7 +35,7 @@ const handleErrors = (err) => {
 }
 
 
-module.exports.adminRegister = async (req, res, next) => { 
+module.exports.adminRegister = async (req, res, next) => {
     try {
         const { email, password } = req.body;
         const admin = await AdminDb.create({ email, password });
@@ -45,10 +45,10 @@ module.exports.adminRegister = async (req, res, next) => {
 
         res.cookie("adminjwt", token, {
             withCredentials: true,
-            httpOnly : false,
-            maxAge: maxAge * 1000, 
+            httpOnly: false,
+            maxAge: maxAge * 1000,
         })
-        res.status(201).json({admin: admin._id, created: true })
+        res.status(201).json({ admin: admin._id, created: true })
     } catch (error) {
         console.log(error);
         const errors = handleErrors(error);
@@ -60,15 +60,15 @@ module.exports.adminRegister = async (req, res, next) => {
 module.exports.adminLogin = async (req, res, next) => {
     try {
         const { email, password } = req.body;
-        const admin = await AdminDb.login( email, password );
-        const token = createToken(admin._id)
-console.log('token', token);
+        const admin = await AdminDb.login(email, password);
+        const adtoken = createToken(admin._id)
+        console.log('token', adtoken);
         // res.cookie("adminjwt", token, {
         //     withCredentials: true,
         //     httpOnly : false,
         //     maxAge: maxAge * 1000, 
         // })
-        res.status(201).json({admin: admin._id, created: true , token})
+        res.status(201).json({ admin: admin._id, created: true, adtoken })
     } catch (error) {
         console.log(error.message);
         const errors = handleErrors(error);
@@ -77,37 +77,37 @@ console.log('token', token);
 };
 
 
-module.exports.updateUser = async (req,res,next) => {
+module.exports.updateUser = async (req, res, next) => {
     try {
         // console.log('comesssssssssssssss', req.params.id);
         const user = await UserDb.findById(req.params.id);
-        res.json({user})
-        
+        res.json({ user })
+
     } catch (error) {
         console.log(error.message);
     }
 }
 
-module.exports.deleteUser = async (req,res, next) => {
+module.exports.deleteUser = async (req, res, next) => {
     try {
         await UserDb.findByIdAndDelete(req.params.id)
         res.json({})
-       
+
     } catch (error) {
         console.log(error);
     }
 }
 
-module.exports.updating = async (req,res,next) => {
+module.exports.updating = async (req, res, next) => {
     try {
 
         console.log('idsssssssss', req.body, req.params.id);
-        const {name, email, phone} = req.body;
-        await UserDd.findByIdAndUpdate(req.params.id, {name, email, phone})
+        const { name, email, phone } = req.body;
+        await UserDd.findByIdAndUpdate(req.params.id, { name, email, phone })
         res.json({})
-            
+
     } catch (error) {
         console.log(error);
-        
+
     }
 }

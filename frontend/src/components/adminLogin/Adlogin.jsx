@@ -1,17 +1,17 @@
 import './adlogin.css'
 import React, { useEffect, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 import { ToastContainer, toast } from 'react-toastify';
 import axios from '../../axiosInstance';
-
+// eslint-disable-next-line
 
 function Login() {
     const navigate = useNavigate();
 
     useEffect(() => {
-        if (!localStorage.getItem('adminToken')) {
-          navigate('/admin')
-        }
+        if (localStorage.getItem('adminToken')) {
+            navigate('/admin/home')
+        }// eslint-disable-next-line
       }, [])
 
     const [values, setValues] = useState({
@@ -47,10 +47,10 @@ function Login() {
                     generateError("Invalid user id or Password");
                     return;
                 }
-                else if (data.user && data.created) {
+                else if (data.admin && data.created) {
                     localStorage.setItem('admin', JSON.stringify(data.admin));
-                    localStorage.setItem('adminToken', data.adminToken);
-                    navigate("/");
+                    localStorage.setItem('adminToken', JSON.stringify (data.adtoken));
+                    navigate("/admin/home");
                 }
             }
         } catch (error) {
@@ -58,24 +58,27 @@ function Login() {
         }
     }
     return (
-        <div className='mainhead'>
-            <div className='container'>
-                <div className='row'>
+        <div className='amainhead'>
+            <Link to={'/'}>
+                <h1 className='jkrooms'>JK ROOMS</h1>
+            </Link>
+            <div className='acontainer'>
+                <div className='arow'>
                     <div className='col-md-6'>
-                        <div className='card'>
-                            <h4 className='title'>Admin Login</h4><br />
-                            <div className='card-body'>
+                        <div className='acard'>
+                            <h4 className='atitle'>Admin Login</h4><br />
+                            <div className='acard-body'>
                                 <form onSubmit={handleSubmit}>
-                                    <div className='form-group'>
+                                    <div className='aform-group'>
                                         <label>Email</label>
-                                        <input type="email" className='form-control' value={values.email} onChange={(e) => setValues({ ...values, email: e.target.value })} />
+                                        <input type="email" className='aform-control' value={values.email} onChange={(e) => setValues({ ...values, email: e.target.value })} />
                                     </div><br />
-                                    <div className='form-group'>
+                                    <div className='aform-group'>
                                         <label>Password</label>
-                                        <input type="password" className='form-control' value={values.password} onChange={(e) => setValues({ ...values, password: e.target.value })} />
+                                        <input type="password" className='aform-control' value={values.password} onChange={(e) => setValues({ ...values, password: e.target.value })} />
                                     </div><br /><br />
-                                    <div className='form-group'>
-                                        <button className='btn btn-primary'>Login</button>
+                                    <div className='aform-group'>
+                                        <button className='abtn btn-primary'>Login</button>
                                     </div><br />
                                     {/* <div className='form-group'>
                                         <button className='btn btn-primary' onClick={register}>Register</button>

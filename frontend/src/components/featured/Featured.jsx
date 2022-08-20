@@ -7,7 +7,7 @@ function Featured() {
     const { data, loading, error } = useFetch(
         "/api/hotels/countByCity?cities=Mumbai,Kolkata,Odisha"
         );
-    console.log('datassssss00', data);
+    // console.log('datassssss00', data);
     return (
         <div className='featured'>
             {loading ? (

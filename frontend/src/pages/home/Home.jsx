@@ -13,6 +13,7 @@ function Home() {
 
   const navigate = useNavigate();
   useEffect(() => {
+    // console.log('home useeffect');
     if (!localStorage.getItem('token')) {
       navigate('/landing')
     }

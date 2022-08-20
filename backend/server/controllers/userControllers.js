@@ -32,7 +32,7 @@ module.exports.register = async (req, res, next) => {
                 httpOnly: false,
                 maxAge: maxAge * 1000,
             })
-            res.status(201).json({ user: user._id, created: true })
+            res.status(201).json({ user: user._id, created: true, token })
         }
     } catch (error) {
         console.log(error);
@@ -44,6 +44,7 @@ module.exports.register = async (req, res, next) => {
 
 module.exports.login = async (req, res, next) => {
     try {
+        console.log('reeeeeeeeeeeeeeeeeeeeeeeeech');
         const { email, password } = req.body;
         const user = await UserDb.login(email, password);
         const token = createToken(user._id)

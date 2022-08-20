@@ -1,9 +1,9 @@
-.navigationBar {
+.unavigationBar {
     background-color: #270e50;
     height: 4rem;
 }
 
-.navigationBar>h1 {
+.unavigationBar>h1 {
     position: absolute;
     width: 144px;
     height: 58px;
@@ -18,7 +18,7 @@
     color: #FFFFFF;
 }
 
-.navBtn {
+.unavBtn {
     margin: 1rem;
     float: right;
     color: black;
