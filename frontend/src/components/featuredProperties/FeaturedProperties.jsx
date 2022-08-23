@@ -4,9 +4,9 @@ import './featuredProperties.css'
 
 function FeaturedProperties() {
     // eslint-disable-next-line
-    const { data, loading, error } = useFetch("/api/hotels?featured=true&limit=4");
+    const { data, loading, error } = useFetch("/api/hotels/featured?featured=true&limit=4");
 
-    // console.log('ddddddaaaay', data);
+    console.log('ddddddaaaay', data);
     return (
         <div className='fp'>
             {loading ?

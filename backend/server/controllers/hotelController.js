@@ -1,4 +1,5 @@
 const Hotel = require('../models/hotelModel');
+const Room = require('../models/roomModel');
 const { hotelExist, hotelRegister } = require("./../services/hotelService");
 const jwt = require("jsonwebtoken");
 
@@ -44,10 +45,9 @@ module.exports.deleteHotel = async (req, res) => {
 
 
 module.exports.getHotel = async (req, res) => {
-    console.log('comingggggggg');
     try {
         const hotel = await Hotel.findById(req.params.id)
-        console.log('id hotel goite', hotel);
+        // console.log('id hotel ', hotel);
         res.status(200).json(hotel)
     } catch (error) {
         res.status(500).json(error)
@@ -59,15 +59,32 @@ module.exports.getHotels = async (req, res, next) => {
     try {
         const { min, max, city } = req.query;
 
-        console.log('dmind', min, max, city);
+        // console.log('dmind', min, max, city);
         const hotels = await Hotel.find({
-            city
+
         });
         // const hotels = await Hotel.find({
         //     ...others,
         //     cheapestPrice: { $gt: min || 1, $lt: max || 999 }
         // }).limit(req.query.limit);
-        console.log('hhhhhhhh', hotels);
+
+        // console.log('hhhhhhhh', hotels);
+        res.status(200).json(hotels)
+    } catch (error) {
+        next(error)
+    }
+}
+
+
+module.exports.featured = async (req, res, next) => {
+    try {
+        const { limit, featured } = req.query;
+
+        // console.log('dmind', limit, featured);
+        const hotels = await Hotel.find({
+            featured
+        }).limit(limit);
+
         res.status(200).json(hotels)
     } catch (error) {
         next(error)
@@ -79,7 +96,7 @@ module.exports.getHotels = async (req, res, next) => {
 //     const { min, max, ...others } = req.query;
 //     // console.log('dsssssssssssssssssssssssssmind', min, max, others);
 //     try {
-       
+
 //         const hotels = await Hotel.find({
 //             ...others,
 //             cheapestPrice: { $gt: min || 1, $lt: max || 999 }
@@ -124,7 +141,7 @@ module.exports.registerHotel = async (req, res, next) => {
     try {
 
         // console.log('backend reached', req.body);
-        const { name, email, phone,  password, address, city, state } = req.body;
+        const { name, email, phone, password, address, city, state } = req.body;
         const isHotelExist = await hotelExist(email, phone);
         if (isHotelExist) {
             // console.log('user already');
@@ -135,7 +152,7 @@ module.exports.registerHotel = async (req, res, next) => {
         }
         else {
             // console.log('rrrrrrrrrrrrrr');
-            const hotel = await hotelRegister(name, email,  phone, password, address, city, state);
+            const hotel = await hotelRegister(name, email, phone, password, address, city, state);
             // console.log('reached here', hotel);
 
             const hotoken = createToken(hotel._id)
@@ -146,7 +163,7 @@ module.exports.registerHotel = async (req, res, next) => {
             //     httpOnly: false,
             //     maxAge: maxAge * 1000,
             // })
-            res.status(201).json({ hotel, created: true , hotoken})
+            res.status(201).json({ hotel, created: true, hotoken })
         }
     } catch (error) {
         console.log(error);
@@ -162,7 +179,7 @@ module.exports.loginHotel = async (req, res, next) => {
         const vendorToken = createToken(hotel._id)
         // console.log('hotel////////////////////////////////////////////', hotel);
 
-        res.status(200).json({ hotel: hotel._id, created: true , vendorToken })
+        res.status(200).json({ hotel: hotel._id, created: true, vendorToken })
     } catch (error) {
         res.json({ error: "Invalid Hotel id and Password", created: false })
     }
@@ -183,5 +200,20 @@ module.exports.hotelRegister = async (name, email, password, phone) => {
     } catch (error) {
         console.log(error);
         // const errors = handleErrors(error);
+    }
+}
+
+module.exports.getHotelRooms = async (req, res, next) => {
+    try {
+        const hotel = await Hotel.findById(req.params.id)
+        const list = await Promise.all(
+            hotel.rooms.map(room => {
+                return Room.findById(room);
+            })
+        );
+
+        res.status(200).json(list)
+    } catch (error) {
+        next(error)
     }
 }

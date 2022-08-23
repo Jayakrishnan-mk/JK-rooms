@@ -7,7 +7,7 @@ import axios from '../../axiosInstance';
 
 
 function Login() {
-    const navigate = useNavigate();
+    const navigate = useNavigate(); 
 
     const register = () => {
         navigate('/register')
@@ -57,10 +57,12 @@ function Login() {
             console.log(error);
         }
     }
+
+
     return (
-        
+
         <div className='umain'>
-           
+
             <Link to={'/'}>
                 <h1 className='jkrooms'>JK ROOMS</h1>
             </Link>

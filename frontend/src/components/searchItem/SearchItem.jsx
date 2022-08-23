@@ -1,8 +1,16 @@
-import React from 'react'
-import { Link } from 'react-router-dom'
+import React, { useContext } from 'react'
+import { useNavigate } from 'react-router-dom'
+import { SearchContext } from '../../context/SearchContext';
 import './searchItem.css'
 
 function SearchItem({ item }) {
+  console.log('item', item);
+  const navigate = useNavigate();
+
+  const handleSearch = () => {
+    navigate(`/hotels/${item._id}`)
+  }
+
   return (
     <div className="searchItem">
       {/* <img src={item.photos[0]}
@@ -28,9 +36,10 @@ function SearchItem({ item }) {
         <div className="siDetailTexts">
           <span className="siPrice">₹{item.cheapestPrice}</span>
           <span className="siTaxOp">Includes taxes and fees</span>
-          <Link to={`/hotels/${item._id}`}>
-            <button className='siCheckButton'>See availability</button>
-          </Link>
+
+          <button className='siCheckButton' onClick={handleSearch}
+          >See availability</button>
+
         </div>
       </div>
     </div>

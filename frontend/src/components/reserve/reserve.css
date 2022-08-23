@@ -1,0 +1,62 @@
+.reserve {
+    width: 100vw;
+    height: 100vh;
+    background-color: black;
+    position: fixed;
+    top: 0;
+    left: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.rContainer {
+    background-color: white;
+    padding: 20px;
+    position: relative;
+}
+
+.rClose {
+  position: absolute;
+  top: 0;
+  right: 0;
+  cursor: pointer;
+
+}
+
+.rItem {
+    display: flex;
+    align-items: center;
+    gap: 50px;
+    padding: 20px;
+}
+
+.rInfo {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.rTitle {
+    font-weight: 500;
+}
+
+.rDesc {
+  font-weight: 300;
+}
+
+.rMax {
+  font-size: 12px;
+}
+
+.rPrice {
+  font-weight: 500;
+}
+
+.rSelectRooms {
+
+}
+
+.rButton {
+  border: none;
+}

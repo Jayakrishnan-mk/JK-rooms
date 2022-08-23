@@ -23,7 +23,7 @@ function HotelList() {
     `/api/hotels?city=${destination}&min=${min || 0}&max=${max || 999}`
     );
 
-    // console.log('ddaaddaa', data);
+    console.log('ddaaddaa', dates);
 
   const handleClick = () => {
     reFetch();
@@ -95,7 +95,7 @@ function HotelList() {
               ) :  (
               <>
             { data.map(item => (
-            <SearchItem item={item} key={item._id} />
+            <SearchItem dates={dates} item={item} key={item._id} />
             ))}
             </>
             )}
